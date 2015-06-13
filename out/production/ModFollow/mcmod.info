@@ -1,0 +1,21 @@
+[
+{
+  "modid": "ModFollow",
+  "name": "Learning Mod",
+  "description": "A Mod to follow Pahimars Lets Mod Series",
+  "version": "0.1",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "zanges"
+  ],
+  "credits": "Pahimar for his Tutorial",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
