@@ -1,6 +1,8 @@
 package com.zanges.modfollow;
 
 import com.zanges.modfollow.handler.ConfigurationHandler;
+import com.zanges.modfollow.init.ModBlocks;
+import com.zanges.modfollow.init.ModItems;
 import com.zanges.modfollow.proxy.IProxy;
 import com.zanges.modfollow.reference.Reference;
 import com.zanges.modfollow.utility.LogHelper;
@@ -27,23 +29,34 @@ public class ModFollow
                 serverSide = Reference.SERVER_PROXY_CLASS)
     public static IProxy proxy;
 
+    // ===== PRE-INIT ======
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
+
+        ModItems.init();
+
+        ModBlocks.init();
+
         LogHelper.info("PreInit Complete!");
     }
+    // =====================
 
+    // ===== INIT ======
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
         LogHelper.info("Init Complete!");
     }
+    // =================
 
+    // ===== POST-INIT ======
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
         LogHelper.info("PostInit Complete!");
     }
+    // ======================
 }
