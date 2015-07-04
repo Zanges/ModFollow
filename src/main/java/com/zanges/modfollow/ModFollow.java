@@ -1,8 +1,10 @@
 package com.zanges.modfollow;
 
+import com.zanges.modfollow.client.handler.KeyInputEventHandler;
 import com.zanges.modfollow.handler.ConfigurationHandler;
 import com.zanges.modfollow.init.ModBlocks;
 import com.zanges.modfollow.init.ModItems;
+import com.zanges.modfollow.init.Recipes;
 import com.zanges.modfollow.proxy.IProxy;
 import com.zanges.modfollow.reference.Reference;
 import com.zanges.modfollow.utility.LogHelper;
@@ -36,6 +38,8 @@ public class ModFollow
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler());
 
+        proxy.registerKeyBindings();
+
         ModItems.init();
 
         ModBlocks.init();
@@ -48,6 +52,8 @@ public class ModFollow
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
+        FMLCommonHandler.instance().bus().register(new KeyInputEventHandler());
+
         LogHelper.info("Init Complete!");
     }
     // =================
@@ -56,6 +62,7 @@ public class ModFollow
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+        Recipes.init();
         LogHelper.info("PostInit Complete!");
     }
     // ======================
